@@ -1,4 +1,4 @@
-Layers:
+### Layers
 - Domain: предоставляет доменные сущности
   Сущности:
     - Ingredient: ингредиент в еде. Например: молоко, яйцо и т.п. Предоставляет информацию о содержании калорий и БЖУ
@@ -11,8 +11,45 @@ Layers:
     - DiaryRepository
 - Presentation: обрабатывает UI и взаимодействия пользователя, использует MVVM
 
-Технологии:
+### Технологии
 - Jetpack Compose для UI
 - Hilt для DI
 - kotlinx.coroutines для асинхронных операций
 - ktor для запросов к серверу
+
+
+### UML
+
+```mermaid
+---
+title: UML Diagram
+---
+classDiagram
+    class Ingredient {
+        +float calories
+        +float proteins
+        +float fats
+        +float carbs
+    }
+
+    class Meal {
+        +List<Ingredient> ingredients
+        +float calories
+        +float protiens
+        +float fats
+        +float carbs
+    }
+    
+    class DiaryEntry {
+        +List<Meal> meals
+        +datetime consumedAt
+    }
+
+    class Diary {
+        +List<DiaryEntry> entries
+    }
+
+    Diary *-- DiaryEntry
+    DiaryEntry o-- Meal
+    DiaryEntry o-- Ingredient
+```
