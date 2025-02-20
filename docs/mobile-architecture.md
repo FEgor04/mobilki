@@ -1,55 +1,42 @@
-### Layers
-- Domain: предоставляет доменные сущности
-  Сущности:
-    - Ingredient: ингредиент в еде. Например: молоко, яйцо и т.п. Предоставляет информацию о содержании калорий и БЖУ
-    - Meal: формирует список ингредиентов в еде. Например: омлет, паста
-    - Diary: хранит информацию о потрблении еды. Например: во вторник утром пользователь съел 100г. омлета
-- Data: управляет источниками данных
-  Примеры:
-    - IngredientRepository
-    - MealRepository
-    - DiaryRepository
-- Presentation: обрабатывает UI и взаимодействия пользователя, использует MVVM
+# Feature-Based architecture
+    features/
+        meal/  # Модуль, отвечающий за функциональность, связанную с приёмами пищи (блюдами).
+            controllers/  # Контроллеры (или Presenters/ViewModels) для обработки действий пользователя и обновления UI.
+              ...
+            models/  # Модели данных, относящиеся к приёмам пищи (например, Meal, Ingredient).
+              ...
+            services/  # Сервисы для выполнения бизнес-логики, связанной с приёмами пищи (например, MealService).
+              ...
+            view/  # UI компоненты, специфичные для отображения информации о приёмах пищи (экраны, виджеты).
+              ...
+            utils/  # Вспомогательные функции, используемые в модуле meal.
+              ...
+        diary/  # Модуль, отвечающий за функциональность дневника питания.
+             controllers/  # Контроллеры (или Presenters/ViewModels) для обработки действий пользователя и обновления UI.
+              ...
+            models/  # Модели данных, относящиеся к дневнику питания (например, DiaryEntry).
+              ...
+            services/  # Сервисы для выполнения бизнес-логики, связанной с дневником (например, DiaryService).
+              ...
+            view/  # UI компоненты, специфичные для отображения дневника питания.
+              ...
+            utils/  # Вспомогательные функции, используемые в модуле diary.
+              ...
+    core/  # Общие компоненты и утилиты, используемые во всём приложении.
+        network/  # Сетевой слой.
+            ApiService.kt  # Интерфейс для взаимодействия с API (например, с использованием Ktor).
+        database/  # Слой базы данных.
+            AppDatabase.kt  # Абстракция базы данных (например, Room Database).
+        utils/  # Общие вспомогательные функции.
+            DateFormatter.kt  # Форматирование даты и времени.
+            Extensions.kt  # Функции расширения Kotlin.
+        ui_components/  # Переиспользуемые UI компоненты.
+            ButtonStyles.kt  # Стили для кнопок.
+            TextFieldStyles.kt  # Стили для текстовых полей.
 
 ### Технологии
-- Jetpack Compose для UI
-- Hilt для DI
-- kotlinx.coroutines для асинхронных операций
-- ktor для запросов к серверу
 
-
-### UML
-
-```mermaid
----
-title: UML Diagram
----
-classDiagram
-    class Ingredient {
-        +float calories
-        +float proteins
-        +float fats
-        +float carbs
-    }
-
-    class Meal {
-        +List<Ingredient> ingredients
-        +float calories
-        +float protiens
-        +float fats
-        +float carbs
-    }
-    
-    class DiaryEntry {
-        +List<Meal> meals
-        +datetime consumedAt
-    }
-
-    class Diary {
-        +List<DiaryEntry> entries
-    }
-
-    Diary *-- DiaryEntry
-    DiaryEntry o-- Meal
-    DiaryEntry o-- Ingredient
-```
+-   **Jetpack Compose:** Декларативный UI-фреймворк для создания пользовательского интерфейса.
+-   **Hilt:**  Библиотека внедрения зависимостей (Dependency Injection), упрощающая управление зависимостями в приложении.
+-   **kotlinx.coroutines:**  Библиотека для управления асинхронными операциями, обеспечивающая неблокирующий ввод/вывод.
+-   **Ktor Client:**  HTTP-клиент для выполнения сетевых запросов.
