@@ -1,5 +1,3 @@
-- Clean Architecture
-
 Layers:
 - Domain: предоставляет доменные сущности
   Сущности:
