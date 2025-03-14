@@ -91,11 +91,4 @@ class AuthNavigationTest {
         composeTestRule.onNodeWithText("Sign In").assertIsDisplayed()
         composeTestRule.onNodeWithText("Don't have an account? Sign Up").assertIsDisplayed()
     }
-
-    @Test
-    fun authNavigation_onAuthSuccess_callsCallback() {
-        // This test is more complex and would require a mock NavHost or a TestNavHost
-        // In a real app, you'd verify the callback is called and navigation happens
-        // For simplicity, we're skipping the implementation
-    }
-} 
+}

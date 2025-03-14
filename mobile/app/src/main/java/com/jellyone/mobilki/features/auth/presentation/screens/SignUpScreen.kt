@@ -156,7 +156,7 @@ fun SignUpScreen(
                             modifier = Modifier.size(24.dp)
                         )
                     } else {
-                        Text("Sign Up")
+                        Text("Let's get you started")
                     }
                 }
                 

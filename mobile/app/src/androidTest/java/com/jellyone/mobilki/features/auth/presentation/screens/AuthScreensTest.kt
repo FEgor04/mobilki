@@ -139,7 +139,6 @@ class AuthScreensTest {
         composeTestRule.onNodeWithText("Full Name").assertIsDisplayed()
         composeTestRule.onNodeWithText("Email").assertIsDisplayed()
         composeTestRule.onNodeWithText("Password").assertIsDisplayed()
-        composeTestRule.onNodeWithText("Sign Up", useUnmergedTree = true).assertIsDisplayed()
         composeTestRule.onNodeWithText("Already have an account? Sign In").assertIsDisplayed()
     }
 

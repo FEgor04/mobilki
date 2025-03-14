@@ -60,13 +60,8 @@ class MainNavigationTest {
         // Assert - After some navigation setup, we should see the Home screen
         composeTestRule.waitForIdle()
         composeTestRule.onNodeWithText("Fitness App").assertExists()
-        composeTestRule.onNodeWithText("Welcome Test User!").assertExists()
+        composeTestRule.onNodeWithText("Sign Out").assertExists()
+        composeTestRule.onNodeWithText("Welcome Test User!" ).assertExists()
     }
 
-    @Test
-    fun mainNavigation_whenSignedOut_navigatesToAuthFlow() {
-        // This test would be more complex and would require interaction with navigation
-        // In a real app, you'd verify signing out causes navigation to auth flow
-        // For simplicity, we're skipping the implementation
-    }
-} 
+}

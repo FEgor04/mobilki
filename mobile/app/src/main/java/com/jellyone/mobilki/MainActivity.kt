@@ -66,12 +66,15 @@ fun MainAppContent(
         
         // Home screen for authenticated users
         composable(Routes.HOME) {
+            val user by viewModel.userState.collectAsState()
             HomeScreen(
                 onSignOut = {
                     navController.navigate("auth") {
                         popUpTo(Routes.HOME) { inclusive = true }
                     }
-                }
+                    viewModel.signOut()
+                },
+                user = user
             )
         }
     }

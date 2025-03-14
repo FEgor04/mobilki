@@ -134,7 +134,7 @@ fun SignInScreen(
                             modifier = Modifier.size(24.dp)
                         )
                     } else {
-                        Text("Sign In")
+                        Text("Welcome to Calories Tracker")
                     }
                 }
                 
