@@ -13,9 +13,12 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class AuthViewModel(application: Application) : AndroidViewModel(application) {
+open class AuthViewModel(application: Application) : AndroidViewModel(application) {
     
-    private val repository = AuthRepository(application.applicationContext)
+    // Function to create repository - this can be overridden in tests
+    protected open fun createRepository(): AuthRepository = AuthRepository(getApplication<Application>().applicationContext)
+    
+    private val repository by lazy { createRepository() }
     
     // Authentication state
     private val _authState = MutableStateFlow<AuthState>(AuthState.Idle)

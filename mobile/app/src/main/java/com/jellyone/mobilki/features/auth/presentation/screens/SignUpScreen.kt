@@ -6,6 +6,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -77,7 +78,9 @@ fun SignUpScreen(
                         keyboardType = KeyboardType.Text,
                         imeAction = ImeAction.Next
                     ),
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .testTag("name_field"),
                     isError = !nameError.isNullOrEmpty(),
                     supportingText = {
                         if (!nameError.isNullOrEmpty()) {
@@ -95,7 +98,9 @@ fun SignUpScreen(
                         keyboardType = KeyboardType.Email,
                         imeAction = ImeAction.Next
                     ),
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .testTag("email_field"),
                     isError = !emailError.isNullOrEmpty(),
                     supportingText = {
                         if (!emailError.isNullOrEmpty()) {
@@ -114,7 +119,9 @@ fun SignUpScreen(
                         keyboardType = KeyboardType.Password,
                         imeAction = ImeAction.Done
                     ),
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .testTag("password_field"),
                     isError = !passwordError.isNullOrEmpty(),
                     supportingText = {
                         if (!passwordError.isNullOrEmpty()) {
@@ -139,7 +146,8 @@ fun SignUpScreen(
                     onClick = { viewModel.signUp(name, email, password) },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(50.dp),
+                        .height(50.dp)
+                        .testTag("signup_button"),
                     enabled = authState !is AuthState.Loading
                 ) {
                     if (authState is AuthState.Loading) {

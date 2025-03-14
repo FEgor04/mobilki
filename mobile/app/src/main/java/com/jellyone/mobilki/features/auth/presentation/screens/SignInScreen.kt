@@ -6,6 +6,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -75,7 +76,9 @@ fun SignInScreen(
                         keyboardType = KeyboardType.Email,
                         imeAction = ImeAction.Next
                     ),
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .testTag("email_field"),
                     isError = !emailError.isNullOrEmpty(),
                     supportingText = {
                         if (!emailError.isNullOrEmpty()) {
@@ -94,7 +97,9 @@ fun SignInScreen(
                         keyboardType = KeyboardType.Password,
                         imeAction = ImeAction.Done
                     ),
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .testTag("password_field"),
                     isError = !passwordError.isNullOrEmpty(),
                     supportingText = {
                         if (!passwordError.isNullOrEmpty()) {
@@ -119,7 +124,8 @@ fun SignInScreen(
                     onClick = { viewModel.signIn(email, password) },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(50.dp),
+                        .height(50.dp)
+                        .testTag("signin_button"),
                     enabled = authState !is AuthState.Loading
                 ) {
                     if (authState is AuthState.Loading) {
