@@ -1,0 +1,18 @@
+ktor:
+  deployment:
+    port: 8080
+  application:
+    modules:
+      - com.koji.ApplicationKt.module
+
+database:
+  jdbcUrl: "jdbc:postgresql://localhost:5432/postgres"
+  driverClassName: "org.postgresql.Driver"
+  username: "postgres"
+  password: "postgres"
+
+jwt:
+  secret: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca4959"
+  issuer: "fitness-app"
+  audience: "users"
+  realm: "Fitness App"

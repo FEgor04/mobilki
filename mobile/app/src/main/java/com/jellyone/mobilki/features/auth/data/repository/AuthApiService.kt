@@ -15,7 +15,7 @@ class AuthApiService {
     private val client = KtorClient.httpClient
     
     // Replace with your actual API base URL
-    private val baseUrl = "https://your-api-base-url.com/api"
+    private val baseUrl = "http://127.0.0.1:8080"
     
     suspend fun signIn(email: String, password: String): ApiResult<AuthResponse> = withContext(Dispatchers.IO) {
         try {
