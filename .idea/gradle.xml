@@ -12,6 +12,8 @@
             <option value="$PROJECT_DIR$/mobile" />
             <option value="$PROJECT_DIR$/mobile/app" />
             <option value="$PROJECT_DIR$/mobile/backend" />
+            <option value="$PROJECT_DIR$/mobile/database" />
+            <option value="$PROJECT_DIR$/mobile/logging" />
           </set>
         </option>
       </GradleProjectSettings>
